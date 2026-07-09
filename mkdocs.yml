@@ -9,6 +9,9 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -22,8 +25,10 @@ theme:
         name: Switch to light mode
   features:
     - navigation.sections
+    - navigation.expand
     - navigation.top
     - navigation.tracking
+    - navigation.indexes
     - navigation.instant
     - navigation.instant.progress
     - toc.follow
@@ -50,10 +55,12 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Quick How-tos: how-tos.md
-  - Before You Begin: before-you-begin.md
-  - Logging In: logging-in.md
-  - SEARN Secretariat: secretariat.md
-  - NRA Admin / Leadership: nra-admin.md
-  - NRA Manager: nra-manager.md
-  - NRA Staff: nra-staff.md
+  - Getting Started:
+      - Before You Begin: before-you-begin.md
+      - Logging In: logging-in.md
+  - Roles:
+      - SEARN Secretariat: secretariat.md
+      - NRA Admin / Leadership: nra-admin.md
+      - NRA Manager: nra-manager.md
+      - NRA Staff: nra-staff.md
   - Giving Feedback: feedback.md

@@ -1,24 +1,206 @@
-/* SEARN brand color (#2a3b8f) override for Material for MkDocs.
-   #2a3b8f isn't a named Material palette color, so it's applied via CSS variables. */
+/* SEARN brand color (#2a3b8f) + Claude Code docs-style chrome for Material for MkDocs.
+   #2a3b8f isn't a named Material palette color, so it's applied via CSS variables,
+   and the header/tabs are re-skinned to a neutral surface with the brand color
+   used only as an accent (active nav item, links, buttons) rather than a solid banner. */
+
+:root {
+  --searn-brand: #2a3b8f;
+  --searn-brand-light: #4a5ab0;
+  --searn-brand-dark: #1c2966;
+}
 
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #2a3b8f;
-  --md-primary-fg-color--light: #4a5ab0;
-  --md-primary-fg-color--dark: #1c2966;
+  --md-primary-fg-color: var(--searn-brand);
+  --md-primary-fg-color--light: var(--searn-brand-light);
+  --md-primary-fg-color--dark: var(--searn-brand-dark);
   --md-primary-bg-color: #ffffff;
   --md-primary-bg-color--light: #ffffff;
-  --md-accent-fg-color: #4d5fc4;
+  --md-accent-fg-color: var(--searn-brand-light);
   --md-accent-fg-color--transparent: #4d5fc41a;
   --md-accent-bg-color: #ffffff;
+  --md-typeset-a-color: var(--searn-brand);
+
+  --searn-surface: #ffffff;
+  --searn-border: rgba(0, 0, 0, 0.08);
+  --searn-nav-active-bg: rgba(42, 59, 143, 0.08);
+  --searn-nav-hover-bg: rgba(0, 0, 0, 0.035);
+  --searn-muted: #5a5f75;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #2a3b8f;
-  --md-primary-fg-color--light: #4a5ab0;
-  --md-primary-fg-color--dark: #1c2966;
+  --md-primary-fg-color: var(--searn-brand-light);
+  --md-primary-fg-color--light: var(--searn-brand-light);
+  --md-primary-fg-color--dark: var(--searn-brand-dark);
   --md-primary-bg-color: #ffffff;
   --md-primary-bg-color--light: #ffffff;
   --md-accent-fg-color: #8b98e0;
   --md-accent-fg-color--transparent: #8b98e01a;
   --md-accent-bg-color: #0b0e21;
+  --md-typeset-a-color: #8b98e0;
+
+  --searn-surface: var(--md-default-bg-color);
+  --searn-border: rgba(255, 255, 255, 0.09);
+  --searn-nav-active-bg: rgba(139, 152, 224, 0.14);
+  --searn-nav-hover-bg: rgba(255, 255, 255, 0.045);
+  --searn-muted: #9a9fb5;
+}
+
+/* ---- Header: flat neutral surface instead of a solid brand banner ---- */
+
+.md-header {
+  background-color: var(--searn-surface);
+  color: var(--md-default-fg-color);
+  box-shadow: none;
+  border-bottom: 1px solid var(--searn-border);
+}
+
+.md-header__title,
+.md-header__topic {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+}
+
+.md-header__button {
+  color: var(--md-default-fg-color);
+}
+
+.md-header__button:hover {
+  opacity: 0.7;
+}
+
+.md-header__source {
+  color: var(--searn-muted);
+}
+
+/* Tabs bar (if enabled) matches the header instead of the brand color */
+.md-tabs {
+  background-color: var(--searn-surface);
+  border-bottom: 1px solid var(--searn-border);
+  color: var(--md-default-fg-color);
+}
+
+.md-tabs__link {
+  color: var(--searn-muted);
+  opacity: 1;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: var(--searn-brand);
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link:hover {
+  color: var(--searn-brand-light);
+}
+
+/* Search box: neutral field instead of a tinted-on-color box */
+.md-search__input {
+  background-color: rgba(0, 0, 0, 0.045);
+  color: var(--md-default-fg-color);
+}
+
+.md-search__input::placeholder {
+  color: var(--searn-muted);
+}
+
+.md-search__icon svg {
+  fill: var(--searn-muted);
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ---- Left sidebar: grouped sections + pill-style active item ---- */
+
+.md-nav__title {
+  color: var(--md-default-fg-color);
+}
+
+.md-nav--primary .md-nav__title {
+  font-weight: 700;
+}
+
+/* Section group labels (e.g. "Getting Started", "Roles") */
+.md-nav__item--section > .md-nav__link,
+.md-nav .md-nav__link[for] ~ .md-nav {
+  font-weight: 600;
+}
+
+.md-nav__link {
+  border-radius: 6px;
+  color: var(--md-default-fg-color);
+  transition: background-color 125ms;
+}
+
+.md-nav__link:hover {
+  background-color: var(--searn-nav-hover-bg);
+}
+
+.md-nav__link--active,
+.md-nav__link--active:hover {
+  background-color: var(--searn-nav-active-bg);
+  color: var(--searn-brand);
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link--active:hover {
+  color: var(--searn-brand-light);
+}
+
+.md-nav__item {
+  padding: 0 0.2rem;
+}
+
+/* ---- Right-hand "on this page" TOC ---- */
+
+.md-nav--secondary .md-nav__link--active {
+  color: var(--searn-brand);
+  font-weight: 600;
+  background-color: transparent;
+}
+
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__link--active {
+  color: var(--searn-brand-light);
+}
+
+/* ---- Softer, rounded admonitions (note / warning / success / info) ---- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 10px;
+  border-width: 0 0 0 4px;
+  box-shadow: none;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 600;
+}
+
+/* ---- Buttons & links ---- */
+
+.md-typeset .md-button {
+  border-radius: 8px;
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--searn-brand);
+  border-color: var(--searn-brand);
+}
+
+/* ---- Card grid (Quick How-tos) ---- */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li {
+  border-radius: 10px;
+  transition: border-color 125ms, box-shadow 125ms;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > ol > li:hover {
+  border-color: var(--searn-brand-light);
+  box-shadow: 0 4px 14px rgba(42, 59, 143, 0.12);
 }
