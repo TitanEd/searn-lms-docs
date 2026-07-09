@@ -1,0 +1,24 @@
+/* SEARN brand color (#2a3b8f) override for Material for MkDocs.
+   #2a3b8f isn't a named Material palette color, so it's applied via CSS variables. */
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #2a3b8f;
+  --md-primary-fg-color--light: #4a5ab0;
+  --md-primary-fg-color--dark: #1c2966;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffff;
+  --md-accent-fg-color: #4d5fc4;
+  --md-accent-fg-color--transparent: #4d5fc41a;
+  --md-accent-bg-color: #ffffff;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #2a3b8f;
+  --md-primary-fg-color--light: #4a5ab0;
+  --md-primary-fg-color--dark: #1c2966;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffff;
+  --md-accent-fg-color: #8b98e0;
+  --md-accent-fg-color--transparent: #8b98e01a;
+  --md-accent-bg-color: #0b0e21;
+}

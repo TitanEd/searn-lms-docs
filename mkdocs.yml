@@ -1,0 +1,59 @@
+site_name: SEARN Platform — Pilot User Guide
+site_description: Pilot user guide for the SEARN Capacity Building Platform.
+site_url: https://titaned.github.io/searn-lms-docs/
+repo_name: TitanEd/searn-lms-docs
+repo_url: https://github.com/TitanEd/searn-lms-docs
+edit_uri: edit/master/docs/
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Quick How-tos: how-tos.md
+  - Before You Begin: before-you-begin.md
+  - Logging In: logging-in.md
+  - SEARN Secretariat: secretariat.md
+  - NRA Admin / Leadership: nra-admin.md
+  - NRA Manager: nra-manager.md
+  - NRA Staff: nra-staff.md
+  - Giving Feedback: feedback.md
