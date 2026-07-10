@@ -19,4 +19,4 @@ Pushing to `master` runs `.github/workflows/deploy.yml`, which builds the site w
 
 For this to work, GitHub Pages must be enabled for this repo: **Settings → Pages → Source: GitHub Actions**.
 
-Once enabled, the site is live at <https://titaned.github.io/searn-lms-docs/>.
+Once enabled, the site is live at <https://docs.searn-lms.titaned.com/>.

@@ -1,6 +1,6 @@
 site_name: SEARN Platform — Pilot User Guide
 site_description: Pilot user guide for the SEARN Capacity Building Platform.
-site_url: https://titaned.github.io/searn-lms-docs/
+site_url: https://docs.searn-lms.titaned.com/
 
 theme:
   name: material
