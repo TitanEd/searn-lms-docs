@@ -1,28 +1,16 @@
 site_name: SEARN Platform — Pilot User Guide
 site_description: Pilot user guide for the SEARN Capacity Building Platform.
 site_url: https://titaned.github.io/searn-lms-docs/
-repo_name: TitanEd/searn-lms-docs
-repo_url: https://github.com/TitanEd/searn-lms-docs
-edit_uri: edit/master/docs/
 
 theme:
   name: material
-  icon:
-    repo: fontawesome/brands/github
+  logo: img/logo.png
+  favicon: img/logo.png
   font:
-    text: Inter
+    text: Roboto
     code: Roboto Mono
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+    - scheme: default
   features:
     - navigation.sections
     - navigation.expand
@@ -38,6 +26,9 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra:
+  generator: false
 
 markdown_extensions:
   - admonition

@@ -7,9 +7,7 @@
   --searn-brand: #2a3b8f;
   --searn-brand-light: #4a5ab0;
   --searn-brand-dark: #1c2966;
-}
 
-[data-md-color-scheme="default"] {
   --md-primary-fg-color: var(--searn-brand);
   --md-primary-fg-color--light: var(--searn-brand-light);
   --md-primary-fg-color--dark: var(--searn-brand-dark);
@@ -27,22 +25,15 @@
   --searn-muted: #5a5f75;
 }
 
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color: var(--searn-brand-light);
-  --md-primary-fg-color--light: var(--searn-brand-light);
-  --md-primary-fg-color--dark: var(--searn-brand-dark);
-  --md-primary-bg-color: #ffffff;
-  --md-primary-bg-color--light: #ffffff;
-  --md-accent-fg-color: #8b98e0;
-  --md-accent-fg-color--transparent: #8b98e01a;
-  --md-accent-bg-color: #0b0e21;
-  --md-typeset-a-color: #8b98e0;
-
-  --searn-surface: var(--md-default-bg-color);
-  --searn-border: rgba(255, 255, 255, 0.09);
-  --searn-nav-active-bg: rgba(139, 152, 224, 0.14);
-  --searn-nav-hover-bg: rgba(255, 255, 255, 0.045);
-  --searn-muted: #9a9fb5;
+/* Every visible text element uses Roboto explicitly, on top of the
+   self-hosted webfont Material loads via theme.font in mkdocs.yml. */
+body,
+input,
+button,
+select,
+textarea,
+.md-typeset {
+  font-family: Roboto, sans-serif;
 }
 
 /* ---- Header: flat neutral surface instead of a solid brand banner ---- */
@@ -68,8 +59,14 @@
   opacity: 0.7;
 }
 
-.md-header__source {
-  color: var(--searn-muted);
+/* No repo link / palette toggle remain in the header, so let the search
+   box take the freed-up space and sit flush against the right edge. */
+.md-header__inner {
+  gap: 0.4rem;
+}
+
+.md-header__inner .md-search {
+  margin-left: auto;
 }
 
 /* Tabs bar (if enabled) matches the header instead of the brand color */
@@ -89,11 +86,6 @@
   color: var(--searn-brand);
 }
 
-[data-md-color-scheme="slate"] .md-tabs__link--active,
-[data-md-color-scheme="slate"] .md-tabs__link:hover {
-  color: var(--searn-brand-light);
-}
-
 /* Search box: neutral field instead of a tinted-on-color box */
 .md-search__input {
   background-color: rgba(0, 0, 0, 0.045);
@@ -106,10 +98,6 @@
 
 .md-search__icon svg {
   fill: var(--searn-muted);
-}
-
-[data-md-color-scheme="slate"] .md-search__input {
-  background-color: rgba(255, 255, 255, 0.07);
 }
 
 /* ---- Left sidebar: grouped sections + pill-style active item ---- */
@@ -145,11 +133,6 @@
   font-weight: 600;
 }
 
-[data-md-color-scheme="slate"] .md-nav__link--active,
-[data-md-color-scheme="slate"] .md-nav__link--active:hover {
-  color: var(--searn-brand-light);
-}
-
 .md-nav__item {
   padding: 0 0.2rem;
 }
@@ -160,10 +143,6 @@
   color: var(--searn-brand);
   font-weight: 600;
   background-color: transparent;
-}
-
-[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__link--active {
-  color: var(--searn-brand-light);
 }
 
 /* ---- Softer, rounded admonitions (note / warning / success / info) ---- */
@@ -203,4 +182,19 @@
 .md-typeset .grid.cards > ol > li:hover {
   border-color: var(--searn-brand-light);
   box-shadow: 0 4px 14px rgba(42, 59, 143, 0.12);
+}
+
+/* ---- Footer: fully removed, including the "Made with Material for
+   MkDocs" credit line and the prev/next page nav ---- */
+
+.md-footer {
+  display: none;
+}
+
+/* Logo carries both the SEARN mark and wordmark, so it needs more room
+   than Material's default header-logo size to stay legible. */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2.6rem;
+  width: auto;
 }
