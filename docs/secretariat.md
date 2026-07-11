@@ -2,7 +2,7 @@
 
 The SEARN Secretariat is the platform's central administrative and coordination role. It sits above the National Regulatory Authorities and Training Providers, and is responsible for onboarding network members, curating the competency framework and training catalogue, reviewing requests, and maintaining overall governance. The tasks below cover everything a Secretariat user does during the pilot.
 
-## 4.1 Onboard a New NRA {: #onboard-a-new-nra }
+## Onboard a New NRA {: #onboard-a-new-nra }
 
 **The story:** A new National Regulatory Authority is joining the network and its people need access to the platform.
 
@@ -18,14 +18,11 @@ The SEARN Secretariat is the platform's central administrative and coordination 
 
 What each field means:
 
-Country
-:   the country this regulatory authority belongs to.
+**Country**: the country this regulatory authority belongs to.
 
-Organization Name
-:   the official name of the NRA.
+**Organization Name**: the official name of the NRA.
 
-Admins (name, email)
-:   the person (or people) who will lead this NRA on the platform. They receive the invitation email.
+**Admins (name, email)**: the person (or people) who will lead this NRA on the platform. They receive the invitation email.
 
 !!! note
     An invitation email is sent automatically to each NRA Admin you list, so they can set their password and log in. Double-check the email addresses before onboarding.
@@ -38,7 +35,7 @@ Admins (name, email)
 !!! success "Outcome"
     The NRA record is created, invitations are sent to its Admins, and the NRA is visible under NRA Management.
 
-## 4.2 Onboard a Training Provider {: #onboard-a-training-provider }
+## Onboard a Training Provider {: #onboard-a-training-provider }
 
 **The story:** A Training Provider will deliver trainings mapped to the competency framework and needs to be registered.
 
@@ -58,7 +55,7 @@ Admins (name, email)
 !!! success "Outcome"
     The Training Provider is registered and can log in to create and submit trainings against the competency framework.
 
-## 4.3 Upload / Add a Competency Framework {: #upload-add-a-competency-framework }
+## Add a Competency Framework {: #upload-add-a-competency-framework }
 
 **The story:** The competency framework is the backbone of the platform — every training maps to it. The Secretariat defines or updates it.
 
@@ -77,20 +74,15 @@ Admins (name, email)
 
 What each field means:
 
-General Information & Introduction
-:   the framework's name and a short description of its purpose.
+**General Information & Introduction**: the framework's name and a short description of its purpose.
 
-Domain & Sub-Domains
-:   the broad areas of competency and their finer breakdown.
+**Domain & Sub-Domains**: the broad areas of competency and their finer breakdown.
 
-Role & Proficiency Level
-:   who the competency applies to and the expected level of skill.
+**Role & Proficiency Level**: who the competency applies to and the expected level of skill.
 
-Organizational-level & Role-specific Competencies
-:   the actual competencies, at both the organization and individual-role level.
+**Organizational-level & Role-specific Competencies**: the actual competencies, at both the organization and individual-role level.
 
-Role-specific Activities
-:   the concrete activities that demonstrate each competency.
+**Role-specific Activities**: the concrete activities that demonstrate each competency.
 
 !!! info "📷 Screenshot"
     The multi-step Create Framework wizard showing the Domain / Competency fields.
@@ -100,7 +92,7 @@ Role-specific Activities
 !!! success "Outcome"
     The competency framework is published and becomes available for Training Providers and NRAs to tag their trainings against.
 
-## 4.4 View & Search the SEARN Training Catalogue {: #view-search-the-searn-training-catalogue }
+## View & Search the SEARN Training Catalogue {: #view-search-the-searn-training-catalogue }
 
 **The story:** The Secretariat needs to see all trainings across the network and spot competencies that still have no training.
 
@@ -114,7 +106,7 @@ Role-specific Activities
 !!! success "Outcome"
     You have a clear view of training coverage against the competency framework, including where gaps remain.
 
-## 4.5 Manage SEARN Countries {: #manage-searn-countries }
+## Manage SEARN Countries {: #manage-searn-countries }
 
 **The story:** The list of participating countries must stay accurate, since it feeds NRA onboarding and reporting.
 
@@ -130,7 +122,7 @@ Role-specific Activities
 !!! success "Outcome"
     The country list accurately reflects network membership and feeds into onboarding and reporting screens.
 
-## 4.6 Review, Approve & Reject Pending Requests {: #review-approve-reject-pending-requests }
+## Review, Approve & Reject Pending Requests {: #review-approve-reject-pending-requests }
 
 **The story:** Administrative requests — onboarding confirmations, access requests, role changes — collect in a queue and need a decision.
 
@@ -146,7 +138,7 @@ Role-specific Activities
 !!! success "Outcome"
     Requests are cleared from the queue and each requester receives a decision, with status updated in the system.
 
-## 4.7 Review Requested Trainings {: #review-requested-trainings }
+## Review Requested Trainings {: #review-requested-trainings }
 
 **The story:** NRAs and staff request trainings that don't yet exist. The Secretariat reviews the most-demanded ones before creating them.
 
@@ -164,7 +156,7 @@ Role-specific Activities
 !!! success "Outcome"
     You can identify highly-requested trainings and create new trainings to meet real demand.
 
-## 4.8 Manage Users (Add, Update, Delete) {: #manage-users }
+## Manage Users (Add, Update, Delete) {: #manage-users }
 
 **The story:** The Secretariat administers user accounts across every role on the platform.
 
@@ -183,7 +175,7 @@ Role-specific Activities
 !!! success "Outcome"
     User accounts are accurately maintained, with access reflecting each person's current role.
 
-## 4.9 Manage Roles & Permissions {: #manage-roles-permissions }
+## Manage Roles & Permissions {: #manage-roles-permissions }
 
 **The story:** Each role should be able to do exactly what its responsibilities require — no more, no less.
 
@@ -202,7 +194,7 @@ Role-specific Activities
 !!! success "Outcome"
     Role-based access is updated platform-wide.
 
-## 4.10 Manage the Organization Profile {: #manage-the-organization-profile }
+## Manage the Organization Profile {: #manage-the-organization-profile }
 
 **The story:** The Secretariat keeps its own organization-level details and branding current.
 
@@ -217,7 +209,7 @@ Role-specific Activities
 !!! success "Outcome"
     Organization-level branding and details are current and correctly displayed to network members.
 
-## 4.11 Manage Your Own Profile {: #manage-your-own-profile }
+## Manage Your Own Profile {: #manage-your-own-profile }
 
 **The story:** Like every user, the Secretariat keeps their own account details accurate.
 

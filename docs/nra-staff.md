@@ -2,7 +2,7 @@
 
 As an NRA Staff user, the platform is where you complete the training assigned to you, prove it, request trainings you need, and track your own growth through your Regulatory Passport. The tasks below cover your full journey as a learner during the pilot.
 
-## 7.1 Start an Assigned Training {: #start-an-assigned-training }
+## Start an Assigned Training {: #start-an-assigned-training }
 
 **The story:** Your Manager has assigned trainings to you. Now you open your queue and begin learning.
 
@@ -22,7 +22,7 @@ As an NRA Staff user, the platform is where you complete the training assigned t
 !!! success "Outcome"
     The training opens and you are underway, with its status now showing as In Progress.
 
-## 7.2 Complete a Training & Upload Your Certificate {: #complete-a-training-upload-your-certificate }
+## Complete a Training & Upload Your Certificate {: #complete-a-training-upload-your-certificate }
 
 **The story:** You have worked through a training and now need to mark it complete, upload proof, and share how it went.
 
@@ -38,11 +38,9 @@ As an NRA Staff user, the platform is where you complete the training assigned t
 
 What each field means:
 
-Completion proof
-:   a certificate or similar document that shows you finished the training.
+**Completion proof**: a certificate or similar document that shows you finished the training.
 
-Star rating & feedback
-:   your honest rating and comments — this is exactly the pilot feedback the team needs.
+**Star rating & feedback**: your honest rating and comments — this is exactly the pilot feedback the team needs.
 
 !!! info "📷 Screenshot"
     The status editor with the Completed option, upload button and rating.
@@ -52,7 +50,7 @@ Star rating & feedback
 !!! success "Outcome"
     The training is recorded as completed with proof attached, and it flows into your learning record and Regulatory Passport.
 
-## 7.3 Request Access to an Existing Training {: #request-access-to-an-existing-training }
+## Request Access to an Existing Training {: #request-access-to-an-existing-training }
 
 **The story:** You spot a training relevant to your role that hasn't been assigned to you, and you request access to it.
 
@@ -67,7 +65,7 @@ Star rating & feedback
 !!! success "Outcome"
     Your request is sent to the NRA Manager for approval, and you can track its status.
 
-## 7.4 Request a New Training or Flag Interest {: #request-a-new-training-or-flag-interest }
+## Request a New Training or Flag Interest {: #request-a-new-training-or-flag-interest }
 
 **The story:** You need a training that isn't in any catalogue — or you want to add your voice to one a colleague already requested.
 
@@ -85,7 +83,7 @@ Star rating & feedback
 !!! success "Outcome"
     A new training request is created (or your interest is added) and becomes visible to the NRA Admin for consideration.
 
-## 7.5 Track Your Own Growth (Regulatory Passport) {: #track-your-own-growth }
+## Track Your Own Growth (Regulatory Passport) {: #track-your-own-growth }
 
 **The story:** You want to see how far you've come — which competencies, activities and domains you've completed, and your overall progress.
 
@@ -105,7 +103,7 @@ Star rating & feedback
 !!! success "Outcome"
     You have a clear, verifiable view of your competency growth and a downloadable copy to keep.
 
-## 7.6 Find Your Organization's Contacts {: #find-your-organizations-contacts }
+## Find Your Organization's Contacts {: #find-your-organizations-contacts }
 
 **The story:** When you hit an issue or have a question, you need to know who represents your authority on the platform.
 
@@ -119,7 +117,7 @@ Star rating & feedback
 !!! success "Outcome"
     You know the key contacts to reach during any issue or query.
 
-## 7.7 Manage Your Own Profile {: #manage-your-own-profile }
+## Manage Your Own Profile {: #manage-your-own-profile }
 
 **The story:** Like every user, you keep your own account details accurate.
 

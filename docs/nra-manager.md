@@ -2,7 +2,7 @@
 
 The NRA Manager operates one level closer to the ground than the NRA Admin. Where the Admin sets up and governs the NRA's presence, you run the day-to-day work of a specific team: keeping the roster current, making sure everyone's training is on track, assigning the right training to the right people, reviewing feedback, and keeping tabs on each member's learning record.
 
-## 6.1 View the SEARN-Wide Training Catalogue {: #view-the-searn-wide-training-catalogue }
+## View the SEARN-Wide Training Catalogue {: #view-the-searn-wide-training-catalogue }
 
 **The story:** Before deciding what your team needs, you check what training already exists across the whole network.
 
@@ -16,7 +16,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     You have a clear picture of network-wide coverage before deciding what your team needs.
 
-## 6.2 View Your NRA-Specific Training Catalogue {: #view-your-nra-specific-training-catalogue }
+## View Your NRA-Specific Training Catalogue {: #view-your-nra-specific-training-catalogue }
 
 **The story:** Now you narrow the view to your own authority, checking whether your team has trainings mapped against every competency that matters locally.
 
@@ -30,7 +30,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     You know exactly which local competencies still need a training.
 
-## 6.3 Add / Update Team Members {: #add-update-team-members }
+## Add / Update Team Members {: #add-update-team-members }
 
 **The story:** You maintain the roster of people on your team, keeping details and involvement current as the team evolves.
 
@@ -46,7 +46,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     Your team roster accurately reflects who is currently involved and in what capacity.
 
-## 6.4 Assign Training to a Team Member {: #assign-training-to-a-team-member }
+## Assign Training to a Team Member {: #assign-training-to-a-team-member }
 
 **The story:** With gaps identified and trainings available, you assign specific trainings to specific team members based on their role and needs.
 
@@ -68,7 +68,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     The assigned member sees the training in their learning queue, and you can track their progress toward completion.
 
-## 6.5 Review Training Feedback {: #review-training-feedback }
+## Review Training Feedback {: #review-training-feedback }
 
 **The story:** After your team completes trainings, they leave feedback. You review it to understand what's working.
 
@@ -84,7 +84,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     You have a clear read on training quality and can act on the feedback.
 
-## 6.6 Track Completion & View the Regulatory Passport {: #track-completion-view-the-regulatory-passport }
+## Track Completion & View the Regulatory Passport {: #track-completion-view-the-regulatory-passport }
 
 **The story:** You confirm your team's completions are recorded correctly and view each member's cumulative learning record.
 
@@ -100,7 +100,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     You can vouch for your team's verified record, and each member has an up-to-date Regulatory Passport.
 
-## 6.7 Manage Pending Requests {: #manage-pending-requests }
+## Manage Pending Requests {: #manage-pending-requests }
 
 **The story:** Requests from your team — access, training, approvals — collect in a queue. You work through them so nothing sits unresolved.
 
@@ -115,7 +115,7 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 !!! success "Outcome"
     The queue is clear, and every requester knows where they stand.
 
-## 6.8 Manage Your Own Profile {: #manage-your-own-profile }
+## Manage Your Own Profile {: #manage-your-own-profile }
 
 **The story:** Like every user, you keep your own account details accurate.
 

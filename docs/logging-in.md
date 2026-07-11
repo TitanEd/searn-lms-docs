@@ -4,14 +4,15 @@ For added security, the platform uses two-step verification. After you enter you
 
 - Open your browser and go to <https://searn-lms.titaned.com/login>.
 - Enter your email and password, checkmark Terms of Use checkbox, then click **Sign In**.
+
+    ![Sign in screen with email, password, and Terms of Use checkbox](img/Logging%20In/Sign-in-SEARN-Capacity-Building-Platfom.png)
+
 - The platform emails a one-time passcode (OTP) to your registered email address. Open your inbox and copy the code.
 - Enter the OTP on the verification screen and click **Verify**.
+
+    ![OTP verification screen](img/Logging%20In/OTP%20verification-SEARN-Capacity-Building-Platfom.png)
+
 - Once the code is verified, you are taken automatically to your Dashboard — the home screen for your role.
-
-!!! info "📷 Screenshot"
-    Login screen (email + password) followed by the OTP verification screen.
-
-    <!-- Add image: docs/img/login-otp-flow.png -->
 
 !!! warning "Use a valid, accessible email"
     Because the OTP is sent by email every time you log in, you can only sign in if you can open the inbox for your registered address. If the code doesn't arrive within a minute, check your spam folder or click **Resend OTP**.

@@ -2,7 +2,7 @@
 
 The NRA Admin represents a National Regulatory Authority within the SEARN network. Once your NRA has been onboarded by the Secretariat, you take ownership of everything inside your authority's boundary: bringing your team onto the platform, defining who can do what, tailoring the competency framework and training catalogue, tracking your team's progress, and keeping your organization's profile current.
 
-## 5.1 Onboard & Manage Your Users {: #onboard-manage-your-users }
+## Onboard & Manage Your Users {: #onboard-manage-your-users }
 
 **The story:** You have just been onboarded and now need to get your authority's staff onto the platform — adding people, updating details as roles change, and removing access when someone leaves.
 
@@ -20,14 +20,11 @@ The NRA Admin represents a National Regulatory Authority within the SEARN networ
 
 What each field means:
 
-Role
-:   what the person can do on the platform (for example Manager or Staff).
+**Role**: what the person can do on the platform (for example Manager or Staff).
 
-Manager
-:   who this person reports to within your NRA.
+**Manager**: who this person reports to within your NRA.
 
-Competency Role
-:   the role used to match this person against the competency framework and trainings.
+**Competency Role**: the role used to match this person against the competency framework and trainings.
 
 !!! info "📷 Screenshot"
     The Add User form showing name, email, role, manager and competency role.
@@ -37,7 +34,7 @@ Competency Role
 !!! success "Outcome"
     Your NRA's staff list matches its real team, with each person able to log in and act according to their role.
 
-## 5.2 Manage Roles & Their Permissions {: #manage-roles-their-permissions }
+## Manage Roles & Their Permissions {: #manage-roles-their-permissions }
 
 **The story:** Not everyone on your team should be able to do everything. You shape roles so each person sees and does only what fits their responsibility.
 
@@ -53,7 +50,7 @@ Competency Role
 !!! success "Outcome"
     Every team member's access reflects exactly the responsibility they hold.
 
-## 5.3 Add an NRA-Specific Competency Framework {: #add-an-nra-specific-competency-framework }
+## Add an NRA-Specific Competency Framework {: #add-an-nra-specific-competency-framework }
 
 **The story:** The SEARN-wide framework covers the network broadly, but your NRA has its own competencies. You extend or customise the framework so locally-created trainings map to what matters for your authority.
 
@@ -76,7 +73,7 @@ Competency Role
 !!! success "Outcome"
     Your NRA's own competency set is live and available for tagging trainings.
 
-## 5.4 View the SEARN-Wide Training Catalogue {: #view-the-searn-wide-training-catalogue }
+## View the SEARN-Wide Training Catalogue {: #view-the-searn-wide-training-catalogue }
 
 **The story:** Before creating anything new, you check what already exists across the whole network — so you avoid duplicating effort and can spot gaps.
 
@@ -90,7 +87,7 @@ Competency Role
 !!! success "Outcome"
     You have a clear picture of network-wide coverage before deciding what your authority still needs to build.
 
-## 5.5 View Your NRA-Specific Training Catalogue {: #view-your-nra-specific-training-catalogue }
+## View Your NRA-Specific Training Catalogue {: #view-your-nra-specific-training-catalogue }
 
 **The story:** Now you narrow the view to just your own authority, checking whether every locally-important competency has a training mapped to it.
 
@@ -104,7 +101,7 @@ Competency Role
 !!! success "Outcome"
     You know exactly which local competencies still need a training created.
 
-## 5.6 Upload an NRA-Specific Training {: #upload-an-nra-specific-training }
+## Upload an NRA-Specific Training {: #upload-an-nra-specific-training }
 
 **The story:** With your framework in place and gaps identified, you upload trainings for the competencies that need coverage.
 
@@ -119,17 +116,13 @@ Competency Role
 
 What each field means:
 
-Training Name & Description
-:   what the training is and what it covers.
+**Training Name & Description**: what the training is and what it covers.
 
-Language
-:   the language the training is delivered in.
+**Language**: the language the training is delivered in.
 
-Activities
-:   the competency-framework activities this training addresses.
+**Activities**: the competency-framework activities this training addresses.
 
-Competencies
-:   the competencies this training maps to.
+**Competencies**: the competencies this training maps to.
 
 !!! info "📷 Screenshot"
     The Create Training form with name, description, language, activities and competencies.
@@ -139,7 +132,7 @@ Competencies
 !!! success "Outcome"
     The training appears in your NRA catalogue and can be enrolled in by your users.
 
-## 5.7 Review Training Feedback {: #review-training-feedback }
+## Review Training Feedback {: #review-training-feedback }
 
 **The story:** After trainees complete a training, they leave feedback. You review it to understand what's working and what needs improvement.
 
@@ -155,7 +148,7 @@ Competencies
 !!! success "Outcome"
     You have a clear read on training quality and can act on feedback for future iterations.
 
-## 5.8 Manage Pending Requests {: #manage-pending-requests }
+## Manage Pending Requests {: #manage-pending-requests }
 
 **The story:** Requests pile up — access changes, enrolment requests, approvals. You work through the queue so nothing sits unresolved.
 
@@ -170,7 +163,7 @@ Competencies
 !!! success "Outcome"
     The queue is clear, and every requester knows where they stand.
 
-## 5.9 Add / Update Team Members {: #add-update-team-members }
+## Add / Update Team Members {: #add-update-team-members }
 
 **The story:** Beyond formal accounts, you maintain the broader roster of people associated with your NRA's work.
 
@@ -186,7 +179,7 @@ Competencies
 !!! success "Outcome"
     Your team roster accurately reflects who is currently involved and in what capacity.
 
-## 5.10 Track Completion & View the Regulatory Passport {: #track-completion-view-the-regulatory-passport }
+## Track Completion & View the Regulatory Passport {: #track-completion-view-the-regulatory-passport }
 
 **The story:** You want to confirm your team's completions are recorded correctly and see each person's cumulative learning record — their Regulatory Passport.
 
@@ -207,7 +200,7 @@ Competencies
 !!! success "Outcome"
     You can vouch for your team's verified competency record, and each user has an up-to-date Regulatory Passport.
 
-## 5.11 Manage the Organization Profile {: #manage-the-organization-profile }
+## Manage the Organization Profile {: #manage-the-organization-profile }
 
 **The story:** Your organization profile is your NRA's public-facing record within the network, so it needs to stay accurate.
 
@@ -222,7 +215,7 @@ Competencies
 !!! success "Outcome"
     Your NRA's profile accurately represents the authority to the rest of the network.
 
-## 5.12 Manage Your Own Profile {: #manage-your-own-profile }
+## Manage Your Own Profile {: #manage-your-own-profile }
 
 **The story:** Like every user, you keep your own account details accurate.
 
