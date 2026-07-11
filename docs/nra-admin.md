@@ -26,10 +26,7 @@ What each field means:
 
 **Competency Role**: the role used to match this person against the competency framework and trainings.
 
-!!! info "📷 Screenshot"
-    The Add User form showing name, email, role, manager and competency role.
-
-    <!-- Add image: docs/img/nra-add-user-form.png -->
+![Add User form showing name, email, role, manager and competency role](img/NRA%20Admin/Add%20New%20User.png)
 
 !!! success "Outcome"
     Your NRA's staff list matches its real team, with each person able to log in and act according to their role.
@@ -65,10 +62,7 @@ What each field means:
 - Review the entered competencies for accuracy.
 - Click **Save**.
 
-!!! info "📷 Screenshot"
-    The NRA-Specific Competency Framework creation wizard.
-
-    <!-- Add image: docs/img/nra-competency-framework-wizard.png -->
+![NRA-Specific Competency Framework creation wizard](img/NRA%20Admin/Add%20an%20NRA-Specific%20Competency%20Framework.png)
 
 !!! success "Outcome"
     Your NRA's own competency set is live and available for tagging trainings.
@@ -124,10 +118,7 @@ What each field means:
 
 **Competencies**: the competencies this training maps to.
 
-!!! info "📷 Screenshot"
-    The Create Training form with name, description, language, activities and competencies.
-
-    <!-- Add image: docs/img/nra-create-training-form.png -->
+![Create Training form with name, description, language, activities and competencies](img/NRA%20Admin/Upload%20an%20NRA-Specific%20Training.png)
 
 !!! success "Outcome"
     The training appears in your NRA catalogue and can be enrolled in by your users.
@@ -191,11 +182,6 @@ What each field means:
 - Click an NRA user to view their learning record: trainings completed, dates, and competencies achieved.
 - Confirm recent completions are reflected accurately.
 - Click **Regulatory Passport** to see the summary.
-
-!!! info "📷 Screenshot"
-    A user's Regulatory Passport summary view.
-
-    <!-- Add image: docs/img/regulatory-passport-admin-view.png -->
 
 !!! success "Outcome"
     You can vouch for your team's verified competency record, and each user has an up-to-date Regulatory Passport.
