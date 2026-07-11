@@ -60,10 +60,9 @@ The NRA Manager operates one level closer to the ground than the NRA Admin. Wher
 - Select one or more trainings from the list.
 - Click **Assign**.
 
-!!! info "📷 Screenshot"
-    The Assign Training dialog with the selectable list of trainings.
+![Selecting a team member to assign training](img/NRA%20Manager/Assign%20Training%20to%20a%20Team%20Member%201.png)
 
-    <!-- Add image: docs/img/assign-training-dialog.png -->
+![Assign Training dialog with the selectable list of trainings](img/NRA%20Manager/Assign%20Training%20to%20a%20Team%20Member%202.png)
 
 !!! success "Outcome"
     The assigned member sees the training in their learning queue, and you can track their progress toward completion.

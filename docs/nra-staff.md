@@ -14,10 +14,7 @@ As an NRA Staff user, the platform is where you complete the training assigned t
 - Click the access-link icon on a training to start it.
 - On first access, confirm the prompt to begin.
 
-!!! info "📷 Screenshot"
-    The My Training list showing the access-link icon on a training row.
-
-    <!-- Add image: docs/img/my-training-list.png -->
+![My Training list showing the access-link icon on a training row](img/NRA%20Staff/Start%20an%20Assigned%20Training.png)
 
 !!! success "Outcome"
     The training opens and you are underway, with its status now showing as In Progress.
@@ -42,10 +39,7 @@ What each field means:
 
 **Star rating & feedback**: your honest rating and comments — this is exactly the pilot feedback the team needs.
 
-!!! info "📷 Screenshot"
-    The status editor with the Completed option, upload button and rating.
-
-    <!-- Add image: docs/img/training-status-editor.png -->
+![Status editor with the Completed option, upload button and rating](img/NRA%20Staff/Complete%20a%20Training%20%26%20Upload%20Your%20Certificate.png)
 
 !!! success "Outcome"
     The training is recorded as completed with proof attached, and it flows into your learning record and Regulatory Passport.
@@ -75,7 +69,12 @@ What each field means:
 
 - Click **Requested Trainings** to see trainings already requested.
 - If the one you want is listed, click **Flag Interest** to add your support — this signals demand to the NRA Admin.
+
+    ![Flagging interest on an already-requested training](img/NRA%20Staff/Flag%20Interest.png)
+
 - If it isn't listed, click **Request Training**, select the activity, write a description, and click **Submit Request**.
+
+    ![Request Training form with activity and description fields](img/NRA%20Staff/Request%20a%20New%20Training.png)
 
 !!! note "Flagging interest matters"
     The more people flag a training, the higher it rises as a priority for the Admin and Secretariat.
@@ -94,11 +93,6 @@ What each field means:
 - Click **Regulatory Passport**.
 - Review the competencies, activities, domains and sub-domains you've completed, along with your overall progress.
 - Optionally, download your Regulatory Passport as a record to keep.
-
-!!! info "📷 Screenshot"
-    The Regulatory Passport view with progress and a download button.
-
-    <!-- Add image: docs/img/regulatory-passport-staff-view.png -->
 
 !!! success "Outcome"
     You have a clear, verifiable view of your competency growth and a downloadable copy to keep.
