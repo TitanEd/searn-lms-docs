@@ -27,10 +27,7 @@ What each field means:
 !!! note
     An invitation email is sent automatically to each NRA Admin you list, so they can set their password and log in. Double-check the email addresses before onboarding.
 
-!!! info "📷 Screenshot"
-    The Add NRA form with Country, Organization Name and Admin fields.
-
-    <!-- Add image: docs/img/add-nra-form.png -->
+![Add NRA form with Country, Organization Name and Admin fields](img/SEARN%20Secretariat/Onboard%20a%20New%20NRA.png)
 
 !!! success "Outcome"
     The NRA record is created, invitations are sent to its Admins, and the NRA is visible under NRA Management.
@@ -84,10 +81,19 @@ What each field means:
 
 **Role-specific Activities**: the concrete activities that demonstrate each competency.
 
-!!! info "📷 Screenshot"
-    The multi-step Create Framework wizard showing the Domain / Competency fields.
+![Create Framework wizard: General Information & Introduction](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%201.png)
 
-    <!-- Add image: docs/img/create-framework-wizard.png -->
+![Create Framework wizard: Domain & Sub-Domains](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%20-%20Domain%20%26%20Sub-Domains.png)
+
+![Create Framework wizard: Add Role](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%20-%20Add%20Role.png)
+
+![Create Framework wizard: Add Proficiency](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%20-%20Add%20Proficiency.png)
+
+![Create Framework wizard: Add Organizational-level Competencies](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%20-%20Add%20Organizational-level%20Compe.png)
+
+![Create Framework wizard: Add Role-specific Competencies](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%20-%20Add%20Role-specific%20Competencies.png)
+
+![Create Framework wizard: Add Role-specific Activities](img/SEARN%20Secretariat/Add%20a%20Competency%20Framework%20-%20Add%20Role-specific%20Activities.png)
 
 !!! success "Outcome"
     The competency framework is published and becomes available for Training Providers and NRAs to tag their trainings against.
