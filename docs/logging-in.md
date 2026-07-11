@@ -2,8 +2,8 @@
 
 For added security, the platform uses two-step verification. After you enter your email and password, it emails you a one-time passcode (OTP) that you must enter to finish signing in. The starting point is the same for every role.
 
-- Open your browser and go to <https://searn-lms.titaned.com/>.
-- Enter your email and password, then click **Log In**.
+- Open your browser and go to <https://searn-lms.titaned.com/login>.
+- Enter your email and password, checkmark Terms of Use checkbox, then click **Sign In**.
 - The platform emails a one-time passcode (OTP) to your registered email address. Open your inbox and copy the code.
 - Enter the OTP on the verification screen and click **Verify**.
 - Once the code is verified, you are taken automatically to your Dashboard — the home screen for your role.

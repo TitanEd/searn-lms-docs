@@ -4,19 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`searn-lms-docs` is a documentation-only repository — there is no source code, build system, or test suite here. It holds end-user–facing documentation for the SEARN Capacity Building Platform (a customized Open edX deployment for regulatory/competency training for health authorities). This repo is one of several independent repositories that make up the broader SEARN workspace; the platform code itself lives in sibling repos (`edx-platform`, `searn-custom-extensions`, the `mfes/*` micro-frontends, etc.), not here.
+`searn-lms-docs` is a documentation-only repository — no application code, no test suite. It is a [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) site that publishes the SEARN Capacity Building Platform Pilot User Guide (end-user–facing docs for a customized Open edX deployment used for regulatory/competency training for health authorities), published to GitHub Pages at <https://docs.searn-lms.titaned.com/>. This repo is one of several independent repositories in the broader SEARN workspace; the platform code itself lives in sibling repos (`edx-platform`, `searn-custom-extensions`, the `mfes/*` micro-frontends, etc.), not here.
 
-Current contents:
-- `SEARN_Pilot_User_Guide.docx` — the Pilot User Guide (Word document), covering platform walkthroughs for each user role during the NRA Pilot phase. As of the current draft (v1.1), it documents workflows for:
-  - **SEARN Secretariat**: onboarding NRAs and training providers, managing competency frameworks, the training catalogue, countries, pending requests, users, roles/permissions, and org profiles.
-  - **NRA Admin/Leadership**: managing users and roles, NRA-specific competency frameworks and training catalogues, uploading trainings, reviewing feedback.
-  - Additional role-specific sections for NRA Manager and NRA Staff further in the document.
-- `LICENSE` — MIT License (TitanEd Online Learning).
-- `README.md` — placeholder (title only).
+`SEARN_Pilot_User_Guide.docx` at the repo root is the original approved Word draft the site content was derived from. It is a legacy/reference artifact, not the live source — the actual, editable content is the Markdown under `docs/`. It's a binary zip archive; if you ever need to inspect it, extract `word/document.xml` (e.g. `unzip -p SEARN_Pilot_User_Guide.docx word/document.xml`) rather than reading it as plain text.
 
-## Working in this repo
+## Commands
 
-- There is nothing to build, lint, or test — changes here are purely documentation edits.
-- `SEARN_Pilot_User_Guide.docx` is a binary Word document. It cannot be read or edited directly as text; to inspect its contents, extract `word/document.xml` from the zip archive (e.g. `unzip -p SEARN_Pilot_User_Guide.docx word/document.xml`) rather than trying to open it as plain text.
-- When asked to update or reason about the guide's content, prefer making edits through a tool that can properly read/write `.docx` XML (or ask the user for a plain-text/Markdown source) rather than attempting freeform binary edits.
-- If new documentation is added, keep it consistent with the existing guide's audience/role structure (SEARN Secretariat, NRA Admin/Leadership, NRA Manager, NRA Staff) since that mirrors the platform's actual RBAC roles defined in `role_assignment` within `searn-custom-extensions`.
+```bash
+pip install -r requirements.txt   # installs mkdocs-material (the only dependency)
+mkdocs serve                      # local preview at http://127.0.0.1:8000, live-reloads on edits
+mkdocs build --strict             # what CI runs; --strict turns warnings (e.g. broken internal links) into failures
+```
+
+There is no lint/test step beyond the strict build. Pushing to `master` triggers `.github/workflows/deploy.yml`, which runs `mkdocs build --strict` and publishes the `site/` output to GitHub Pages via `actions/deploy-pages`. GitHub Pages must stay set to **Settings → Pages → Source: GitHub Actions** for this to work.
+
+## Structure
+
+- `mkdocs.yml` — site config: nav tree, theme, markdown extensions. **The `nav:` list is the source of truth for site structure** — a new page under `docs/` is invisible on the site until added here.
+- `docs/*.md` — the actual guide content, one file per role/topic (`secretariat.md`, `nra-admin.md`, `nra-manager.md`, `nra-staff.md`, plus `index.md`, `before-you-begin.md`, `logging-in.md`, `how-tos.md`, `feedback.md`). This mirrors the platform's real RBAC roles defined in `role_assignment` within `searn-custom-extensions` — keep any new role-specific content consistent with that structure.
+- `docs/img/` — images (currently just `logo.png`); `docs/stylesheets/extra.css` — custom brand styling on top of Material (SEARN blue `#2a3b8f`, re-skinned header/tabs to match Claude Code's docs look — see the comment at the top of the file for the rationale).
+- `docs/CNAME` — GitHub Pages custom domain (`docs.searn-lms.titaned.com`); copied into the built `site/` automatically by MkDocs since it lives in `docs/`. Don't remove it or Pages reverts to the default `*.github.io` domain (this happened before — see git history).
+- Each guide page follows a fixed pattern for tasks: **The story** (why), **Navigation** (where to click), **Steps**, **Outcome**. Follow this pattern when adding new task documentation so pages stay consistent.
+- Screenshots aren't in yet — pages use a `📷 **Screenshot**` placeholder convention (see the admonition on `docs/index.md`) where an annotated image will eventually go.

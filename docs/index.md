@@ -23,9 +23,6 @@ Each task follows the same simple pattern, so once you have done one, the rest f
 - **Steps** — a short list of exactly what to do.
 - **Outcome** — how you know it worked.
 
-!!! note "Screenshots will be added later"
-    Wherever you see a 📷 **Screenshot** placeholder, an annotated image will be inserted in the final version to show the exact screen.
-
 ## Where to start
 
 - New here? Start with [Before You Begin](before-you-begin.md) and [Logging In](logging-in.md).
