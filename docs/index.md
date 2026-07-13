@@ -4,12 +4,6 @@
 
 *How to perform key activities on the platform*
 
-| | |
-|---|---|
-| **Audience** | SEARN Secretariat · NRA Admin / Leadership · NRA Manager · NRA Staff |
-| **Phase** | NRA Pilot |
-| **Version** | 1.1 (Draft for pilot) |
-
 ## Purpose
 
 This guide helps you perform real tasks on the SEARN Capacity Building Platform during the pilot. It is organised by user role. Find your role, then follow the task you want to complete — or use the [Quick How-tos](how-tos.md) page to jump straight to a task.
