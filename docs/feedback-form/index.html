@@ -58,7 +58,6 @@
     header .purpose {
       font-size: 0.9rem;
       color: var(--ink);
-      max-width: 70ch;
     }
 
     h2 {
@@ -115,6 +114,27 @@
       font-size: 0.9rem;
       color: var(--muted);
       margin-bottom: 14px;
+    }
+
+    /* Respondent details */
+    .details-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .details-grid label {
+      display: block;
+    }
+
+    .details-grid .field-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .required {
+      color: var(--err);
     }
 
     /* Role picker */
@@ -215,7 +235,7 @@
 
     .score-options input { accent-color: var(--teal); }
 
-    input[type="text"],
+    input[type="text"], input[type="email"],
     textarea,
     select {
       width: 100%;
@@ -399,32 +419,50 @@
     </div>
 
     <form id="feedback-form">
+      <h2>Your Details</h2>
+      <div class="guide">
+        <div class="details-grid">
+          <label>
+            <span class="field-label">Name <span class="required">*</span></span>
+            <input type="text" name="respondent_name" required />
+          </label>
+          <label>
+            <span class="field-label">Email <span class="required">*</span></span>
+            <input type="email" name="respondent_email" required />
+          </label>
+          <label>
+            <span class="field-label">Organization Name <span class="required">*</span></span>
+            <input type="text" name="respondent_organization" required />
+          </label>
+        </div>
+      </div>
+
       <h2>Select your user group</h2>
       <div class="role-box">
         <p>Choose one. Your questions will appear below.</p>
         <div class="roles" role="radiogroup" aria-label="User group">
           <label class="role">
             <input type="radio" name="user_group" value="leadership" required />
-            <span>1. NRA Leadership / HR / Training Lead Feedback</span>
+            <span>NRA Admin (Leadership / HR / Training Lead) Feedback</span>
           </label>
           <label class="role">
             <input type="radio" name="user_group" value="manager" />
-            <span>2. NRA Manager Feedback</span>
+            <span>NRA Manager Feedback</span>
           </label>
           <label class="role">
             <input type="radio" name="user_group" value="staff" />
-            <span>3. NRA Staff / Learner Feedback</span>
+            <span>NRA Staff / Learner Feedback</span>
           </label>
           <label class="role">
             <input type="radio" name="user_group" value="it" />
-            <span>4. IT / Access Focal Point Feedback</span>
+            <span>IT / Access Focal Point Feedback</span>
           </label>
         </div>
       </div>
 
       <!-- ========== 1. Leadership ========== -->
       <section id="panel-leadership" class="panel" data-group="leadership" hidden>
-        <h2>1. NRA Leadership / HR / Training Lead Feedback</h2>
+        <h2>NRA Admin (Leadership / HR / Training Lead) Feedback</h2>
         <p class="focus-line"><strong>Focus:</strong> whether the platform gives the NRA enough control, visibility, and structure to manage workforce development.</p>
 
         <h3>Feedback questions</h3>
@@ -450,7 +488,7 @@
 
       <!-- ========== 2. Manager ========== -->
       <section id="panel-manager" class="panel" data-group="manager" hidden>
-        <h2>2. NRA Manager Feedback</h2>
+        <h2>NRA Manager Feedback</h2>
         <p class="focus-line"><strong>Focus:</strong> whether a manager can realistically identify team needs, assign training, monitor progress, and review records.</p>
 
         <h3>Feedback questions</h3>
@@ -476,7 +514,7 @@
 
       <!-- ========== 3. Staff ========== -->
       <section id="panel-staff" class="panel" data-group="staff" hidden>
-        <h2>3. NRA Staff / Learner Feedback</h2>
+        <h2>NRA Staff / Learner Feedback</h2>
         <p class="focus-line"><strong>Focus:</strong> whether staff can easily find training, complete assigned tasks, upload proof, give feedback, and view their own learning record.</p>
 
         <h3>Feedback questions</h3>
@@ -502,7 +540,7 @@
 
       <!-- ========== 4. IT ========== -->
       <section id="panel-it" class="panel" data-group="it" hidden>
-        <h2>4. IT / Access Focal Point Feedback</h2>
+        <h2>IT / Access Focal Point Feedback</h2>
         <p class="focus-line"><strong>Focus:</strong> whether pilot users can access the environment and whether there are immediate practical access barriers.</p>
 
         <h3>Feedback questions</h3>
@@ -533,27 +571,27 @@
           <thead><tr><th>Question</th><th>Response</th></tr></thead>
           <tbody>
             <tr>
-              <td>What role did you test?</td>
-              <td><input type="text" name="common_role_tested" /></td>
-            </tr>
-            <tr>
-              <td>Which workflow did you test?</td>
-              <td><input type="text" name="common_workflow_tested" /></td>
+              <td>How was your overall experience?</td>
+              <td>
+                <div class="score-options">
+                  <label><input type="radio" name="overall_experience" value="1" /> 1</label>
+                  <label><input type="radio" name="overall_experience" value="2" /> 2</label>
+                  <label><input type="radio" name="overall_experience" value="3" /> 3</label>
+                  <label><input type="radio" name="overall_experience" value="4" /> 4</label>
+                  <label><input type="radio" name="overall_experience" value="5" /> 5</label>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>What worked well?</td>
               <td><textarea name="common_worked_well"></textarea></td>
             </tr>
             <tr>
-              <td>What was unclear?</td>
-              <td><textarea name="common_unclear"></textarea></td>
-            </tr>
-            <tr>
               <td>What should be improved before wider rollout?</td>
               <td><textarea name="common_improve"></textarea></td>
             </tr>
             <tr>
-              <td>Any issue that blocks pilot continuation?</td>
+              <td>Did you face any issue that blocked pilot continuation? </td>
               <td>
                 <div class="yn">
                   <label><input type="radio" name="common_blocker" value="Yes" /> Yes</label>
@@ -566,7 +604,7 @@
               <td><textarea name="common_blocker_desc"></textarea></td>
             </tr>
             <tr>
-              <td>Overall readiness for pilot use (1–5)</td>
+              <td>Overall readiness for pilot use.</td>
               <td>
                 <div class="score-options">
                   <label><input type="radio" name="common_readiness" value="1" /> 1</label>
@@ -578,14 +616,12 @@
               </td>
             </tr>
             <tr>
-              <td>Would you recommend continuing to the structured pilot?</td>
-              <td>
-                <div class="yn">
-                  <label><input type="radio" name="common_recommend" value="Yes" /> Yes</label>
-                  <label><input type="radio" name="common_recommend" value="No" /> No</label>
-                  <label><input type="radio" name="common_recommend" value="With changes" /> With changes</label>
-                </div>
-              </td>
+              <td>How do you feel about Pilot preparation – instructions, documentation, follow-ups? </td>
+              <td><textarea name="common_pilot_preparation"></textarea></td>
+            </tr>
+            <tr>
+              <td>Anything else that you’d like to share? </td>
+              <td><textarea name="common_anything_else"></textarea></td>
             </tr>
           </tbody>
         </table>
@@ -609,6 +645,7 @@
       leadership: {
         scores: [
           ["NRA setup", "Is the NRA structure, users, and roles clear enough to represent your organization?"],
+          ["User setup", "Was the user onboarding process clear?"],
           ["Role permissions", "Do the permissions for leadership, managers, and staff feel appropriate?"],
           ["Competency framework", "Is the link between SEARN competencies and NRA-specific competency needs understandable?"],
           ["NRA-specific training catalogue", "Is it clear how the NRA can add or manage its own training entries?"],
@@ -616,7 +653,11 @@
           ["Regulatory Passport", "Is the Regulatory Passport useful as a record of staff training and competency development?"],
           ["Reporting", "Are the reports useful for NRA-level review and planning?"],
           ["Data boundary", "Is it clear which data remains within the NRA LMS and what may be shared as aggregated information?"],
-          ["Pilot readiness", "Would this workflow support a small internal pilot in your NRA?"]
+          ["Pilot readiness", "Would this workflow support a small internal pilot in your NRA?"],
+          ["Network access", "Was the platform accessible from office networks?"],
+          ["Browser compatibility", "Did the platform work on commonly used browsers?"],
+          ["Support process", "Was it clear how to raise access or technical issues? "],
+          ["Pilot environment", "Was the distinction between pilot environment and production hosting clear?"]
         ],
         open: [
           "Which part of the NRA Leadership / HR workflow felt most useful?",
@@ -846,8 +887,17 @@
         recommend: all.common_recommend || "",
       };
 
+      const respondent = {
+        name: all.respondent_name || "",
+        email: all.respondent_email || "",
+        organization: all.respondent_organization || "",
+      };
+
       // Plain text a non-technical person can read in one cell
-      let report = "USER GROUP: " + (GROUP_LABELS[key] || key) + "\n\n";
+      let report = "NAME: " + (respondent.name || "-") + "\n";
+      report += "EMAIL: " + (respondent.email || "-") + "\n";
+      report += "ORGANIZATION: " + (respondent.organization || "-") + "\n\n";
+      report += "USER GROUP: " + (GROUP_LABELS[key] || key) + "\n\n";
       report += "SCORES (1 = not clear, 5 = very clear)\n";
       scores.forEach((s) => {
         report += "• " + s.area + ": " + (s.score || "-") + "\n";
@@ -862,6 +912,7 @@
 
       const payload = {
         submittedAt: new Date().toLocaleString(),
+        respondent,
         userGroup: GROUP_LABELS[key] || key,
         groupKey: key,
         common,
