@@ -903,6 +903,7 @@
         improve: all.common_improve || "",
         blocker: all.common_blocker || "",
         blockerDesc: all.common_blocker_desc || "",
+        dashboardInfo: all.common_dashboard_info || "",
         readiness: all.common_readiness || "",
         pilotPreparation: all.common_pilot_preparation || "",
         anythingElse: all.common_anything_else || "",
@@ -939,6 +940,7 @@
       if (common.blocker === "Yes") {
         report += "  Blocker description: " + (common.blockerDesc || "-") + "\n";
       }
+      report += "• Dashboard info wanted: " + (common.dashboardInfo || "-") + "\n";
       report += "• Overall readiness for pilot use (1–5): " + (common.readiness || "-") + "\n";
       report += "• Pilot preparation feedback: " + (common.pilotPreparation || "-") + "\n";
       report += "• Anything else: " + (common.anythingElse || "-") + "\n";
@@ -952,6 +954,7 @@
         { question: "What should be improved before wider rollout?", response: common.improve },
         { question: "Did you face any issue that blocked pilot continuation?", response: common.blocker },
         { question: "If yes, describe the blocker.", response: common.blockerDesc },
+        { question: "Apart from the current information displayed, is there anything else you would like to see on the dashboard?", response: common.dashboardInfo },
         { question: "Overall readiness for pilot use.", response: common.readiness },
         { question: "How do you feel about Pilot preparation – instructions, documentation, follow-ups?", response: common.pilotPreparation },
         { question: "Anything else that you’d like to share?", response: common.anythingElse },
