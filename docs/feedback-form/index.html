@@ -759,6 +759,14 @@
         .join("");
     }
 
+    // Display-only emphasis for open-ended question text. The plain string
+    // in GROUPS[key].open stays untouched (it's what's used for the sheet
+    // column header and the submitted report), so this never reaches the
+    // payload or Google Sheet — it only affects what's rendered on screen.
+    function highlightMostLeast(text) {
+      return text.replace(/\b(most|least)\b/gi, "<strong>$1</strong>");
+    }
+
     function renderGroup(key) {
       const data = GROUPS[key];
       const scoresEl = document.getElementById("scores-" + key);
@@ -779,7 +787,7 @@
       openEl.innerHTML = data.open
         .map((q, i) => {
           return `<tr>
-            <td>${q}</td>
+            <td>${highlightMostLeast(q)}</td>
             <td><textarea name="${key}_open_${i}" rows="3"></textarea></td>
           </tr>`;
         })
