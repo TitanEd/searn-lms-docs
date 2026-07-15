@@ -7,8 +7,8 @@
   <script src="settings.js?v=3"></script>
   <style>
     :root {
-      --teal: #0d7377;
-      --teal-dark: #095456;
+      --teal: #2a3b8f;
+      --teal-dark: #2a3b8f;
       --header-bg: #1a365d;
       --row-alt: #e8f4f8;
       --border: #c5d4de;
@@ -329,6 +329,22 @@
     .status.show { display: block; }
     .status.ok { color: var(--ok); }
     .status.err { color: var(--err); }
+    .status.pending { color: var(--muted); display: flex; align-items: center; gap: 8px; }
+
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--border);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
     .thankyou {
       display: none;
@@ -398,9 +414,7 @@
       <h1 id="cfg-title">SEARN NRA LMS Pilot Feedback Form</h1>
       <p class="tagline" id="cfg-tagline">Structured feedback by user group | For pilot validation and improvement tracking</p>
       <p class="purpose" id="cfg-purpose">
-        This form captures practical feedback from each user group participating in the SEARN NRA LMS pilot.
-        The aim is to validate current platform workflows, role fit, usability, access, records, catalogue, and reporting.
-        It is not intended to collect broad wishlist items or new scope.
+        This form captures practical feedback from each user group participating in the SEARN NRA LMS pilot. The aim is to validate current platform workflows, role fit, usability, access, records and catalogue. It is not intended to collect broad wishlist items or new scope.
       </p>
     </header>
 
@@ -483,7 +497,7 @@
         </table>
 
         <h3>Open-ended questions</h3>
-        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, and catalogue.</p>
         <table class="feedback open">
           <thead><tr><th>Question</th><th>Response</th></tr></thead>
           <tbody id="open-leadership"></tbody>
@@ -509,7 +523,7 @@
         </table>
 
         <h3>Open-ended questions</h3>
-        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, and catalogue.</p>
         <table class="feedback open">
           <thead><tr><th>Question</th><th>Response</th></tr></thead>
           <tbody id="open-manager"></tbody>
@@ -535,7 +549,7 @@
         </table>
 
         <h3>Open-ended questions</h3>
-        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, and catalogue.</p>
         <table class="feedback open">
           <thead><tr><th>Question</th><th>Response</th></tr></thead>
           <tbody id="open-staff"></tbody>
@@ -561,7 +575,7 @@
         </table>
 
         <h3>Open-ended questions</h3>
-        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, and catalogue.</p>
         <table class="feedback open">
           <thead><tr><th>Question</th><th>Response</th></tr></thead>
           <tbody id="open-it"></tbody>
@@ -655,7 +669,6 @@
           ["NRA-specific training catalogue", "Is it clear how the NRA can add or manage its own training entries?"],
           ["Training records", "Does the system provide useful visibility into staff training records?"],
           ["Regulatory Passport", "Is the Regulatory Passport useful as a record of staff training and competency development?"],
-          ["Reporting", "Are the reports useful for NRA-level review and planning?"],
           ["Data boundary", "Is it clear which data remains within the NRA LMS and what may be shared as aggregated information?"],
           ["Pilot readiness", "Would this workflow support a small internal pilot in your NRA?"],
           ["Network access", "Was the platform accessible from office networks?"],
@@ -664,10 +677,11 @@
           ["Pilot environment", "Was the distinction between pilot environment and production hosting clear?"]
         ],
         open: [
-          "Which part of the NRA Leadership / HR workflow felt most useful?",
+          "Which part of the NRA Admin (Leadership / HR / Training Lead) workflow felt most useful?",
           "Which step was unclear or did not match how your NRA currently manages training?",
           "What data would you need to see before using this for real training planning?",
           "Are there any role or permission concerns we should correct before broader onboarding?",
+          "What information would you need on the dashboard?",
           "What is the one change that would make this more practical for your NRA?"
         ]
       },
@@ -684,7 +698,7 @@
           ["Practical fit", "Would this help you manage team training more consistently?"]
         ],
         open: [
-          "What would you most likely use as a manager: catalogue search, assignment, progress tracking, or records?",
+          "What would you most likely use as a manager: catalogue search, training assignment, team management, or progress tracking?",
           "Was any step confusing or too many clicks?",
           "Does the workflow match how training decisions are made in your team?",
           "What information would you need on the manager dashboard?",
@@ -706,6 +720,7 @@
         open: [
           "What was easiest to understand?",
           "What was confusing or unclear?",
+          "What information would you need on the staff dashboard?",
           "Would you know what action to take after logging in?",
           "Is the Regulatory Passport useful to you as a personal training record?",
           "What is the one improvement that would make this easier for staff?"
@@ -958,9 +973,11 @@
       }
 
       const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnLabel = submitBtn.textContent;
       submitBtn.disabled = true;
-      status.className = "status";
-      status.textContent = "";
+      submitBtn.textContent = "Submitting...";
+      status.className = "status show pending";
+      status.innerHTML = '<span class="spinner"></span>Please wait while we process your feedback...';
 
       try {
         // text/plain + no-cors avoids browser CORS blocks with Apps Script
@@ -978,6 +995,7 @@
         console.error(err);
       } finally {
         submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnLabel;
       }
     });
   </script>
