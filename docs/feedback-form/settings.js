@@ -4,5 +4,5 @@
  */
 window.FORM_SETTINGS = {
   googleScriptUrl:
-    "https://script.google.com/macros/s/AKfycbyZhzRkY9Pu9a89H5By8aptvZiwK_E3mTqb3dOjWa3vMPLhWnP-IYS0loNpSIqP14BgsQ/exec",
+    "https://script.google.com/macros/s/AKfycbxxpg83NWN43ELuag7pbh7qi4ar9pzZsTgeXcTGs2cvf7rMQDx7DgwSjO-nYgc7BGBptg/exec",
 };

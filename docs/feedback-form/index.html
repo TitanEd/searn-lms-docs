@@ -595,7 +595,7 @@
               <td><textarea name="common_improve"></textarea></td>
             </tr>
             <tr>
-              <td>Did you face any issue that blocked pilot continuation? </td>
+              <td>Did you face any issue that blocked pilot continuation?</td>
               <td>
                 <div class="yn">
                   <label><input type="radio" name="common_blocker" value="Yes" /> Yes</label>
@@ -620,11 +620,11 @@
               </td>
             </tr>
             <tr>
-              <td>How do you feel about Pilot preparation – instructions, documentation, follow-ups? </td>
+              <td>How do you feel about Pilot preparation – instructions, documentation, follow-ups?</td>
               <td><textarea name="common_pilot_preparation"></textarea></td>
             </tr>
             <tr>
-              <td>Anything else that you’d like to share? </td>
+              <td>Anything else that you’d like to share?</td>
               <td><textarea name="common_anything_else"></textarea></td>
             </tr>
           </tbody>
@@ -926,12 +926,26 @@
       report += "• Pilot preparation feedback: " + (common.pilotPreparation || "-") + "\n";
       report += "• Anything else: " + (common.anythingElse || "-") + "\n";
 
+      // Sent as {question, response} pairs (same shape as scores/open) so the
+      // Apps Script sheet columns can be derived from question text alone —
+      // wording changes here don't require touching the Apps Script.
+      const commonQA = [
+        { question: "How was your overall experience?", response: common.overallExperience },
+        { question: "What worked well?", response: common.workedWell },
+        { question: "What should be improved before wider rollout?", response: common.improve },
+        { question: "Did you face any issue that blocked pilot continuation?", response: common.blocker },
+        { question: "If yes, describe the blocker.", response: common.blockerDesc },
+        { question: "Overall readiness for pilot use.", response: common.readiness },
+        { question: "How do you feel about Pilot preparation – instructions, documentation, follow-ups?", response: common.pilotPreparation },
+        { question: "Anything else that you’d like to share?", response: common.anythingElse },
+      ];
+
       const payload = {
         submittedAt: new Date().toLocaleString(),
         respondent,
         userGroup: GROUP_LABELS[key] || key,
         groupKey: key,
-        common,
+        common: commonQA,
         scores,
         open,
         readableReport: report,
