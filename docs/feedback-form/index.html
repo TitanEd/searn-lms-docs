@@ -179,6 +179,10 @@
 
     .role span { font-size: 0.95rem; }
 
+    /* Temporarily disabled user groups: kept in the DOM so re-enabling is
+       a one-line change (remove this class), just not shown or selectable. */
+    .role--disabled { display: none; }
+
     /* Panels */
     .panel { display: none; margin-top: 8px; }
     .panel.active { display: block; }
@@ -453,8 +457,8 @@
             <input type="radio" name="user_group" value="staff" />
             <span>NRA Staff / Learner Feedback</span>
           </label>
-          <label class="role">
-            <input type="radio" name="user_group" value="it" />
+          <label class="role role--disabled">
+            <input type="radio" name="user_group" value="it" disabled />
             <span>IT / Access Focal Point Feedback</span>
           </label>
         </div>
