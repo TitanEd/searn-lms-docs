@@ -6,7 +6,7 @@ The purpose of this pilot is to learn what works and what doesn't. As you go thr
 
 Use the structured feedback form. Choose your user group, score each item (1–5), add comments, and submit.
 
-**[Open SEARN NRA LMS Pilot Feedback Form](/feedback-form/)**{ .md-button .md-button--primary }
+[Open SEARN NRA LMS Pilot Feedback Form](/feedback-form/){ .md-button .md-button--primary target="_blank" rel="noopener" }
 
 Helpful feedback usually mentions:
 

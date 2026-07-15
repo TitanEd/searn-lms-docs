@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SEARN NRA LMS Pilot Feedback Form</title>
-  <script src="settings.js"></script>
+  <script src="settings.js?v=3"></script>
   <style>
     :root {
       --teal: #0d7377;
@@ -528,7 +528,7 @@
 
       <!-- Common for all -->
       <div id="common-block" class="common-block">
-        <h2>Common Final Questions for All Users</h2>
+        <h2>Common Questions</h2>
         <table class="feedback open">
           <thead><tr><th>Question</th><th>Response</th></tr></thead>
           <tbody>
@@ -796,6 +796,7 @@
       });
     });
 
+    // Prefer settings.js; fallback = your latest Web app URL
     // URL comes from settings.js only — do not hardcode here
     const GOOGLE_SCRIPT_URL = (CFG.googleScriptUrl || "").trim();
 
