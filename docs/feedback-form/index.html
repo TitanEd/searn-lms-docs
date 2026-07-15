@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEARN NRA LMS Pilot Feedback Form</title>
+  <script src="settings.js"></script>
+  <style>
+    :root {
+      --teal: #0d7377;
+      --teal-dark: #095456;
+      --header-bg: #1a365d;
+      --row-alt: #e8f4f8;
+      --border: #c5d4de;
+      --bg: #f4f7f9;
+      --ink: #1a2332;
+      --muted: #5a6a7a;
+      --white: #fff;
+      --focus: #2b6cb0;
+      --ok: #276749;
+      --err: #c53030;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+      padding: 24px 16px 64px;
+    }
+
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--teal);
+    }
+
+    header h1 {
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      color: var(--teal-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    header .tagline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    header .purpose {
+      font-size: 0.9rem;
+      color: var(--ink);
+      max-width: 70ch;
+    }
+
+    h2 {
+      color: var(--teal);
+      font-size: 1.15rem;
+      margin: 28px 0 12px;
+    }
+
+    h3 {
+      color: var(--teal);
+      font-size: 1.05rem;
+      margin: 22px 0 8px;
+    }
+
+    .guide {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 8px;
+    }
+
+    .guide p { font-size: 0.9rem; margin-bottom: 12px; }
+
+    .scale {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .scale th {
+      background: var(--header-bg);
+      color: var(--white);
+      text-align: left;
+      padding: 8px 10px;
+    }
+
+    .scale td {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .scale tr:nth-child(even) td { background: var(--row-alt); }
+
+    .note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .focus-line {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* Role picker */
+    .role-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .role-box > p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .roles {
+      display: grid;
+      gap: 10px;
+    }
+
+    .role {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .role:hover { border-color: var(--teal); background: #f0fafb; }
+
+    .role:has(input:checked) {
+      border-color: var(--teal);
+      background: #e6f5f6;
+      box-shadow: inset 3px 0 0 var(--teal);
+    }
+
+    .role input { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; }
+
+    .role span { font-size: 0.95rem; }
+
+    /* Panels */
+    .panel { display: none; margin-top: 8px; }
+    .panel.active { display: block; }
+
+    table.feedback {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: var(--white);
+      margin-bottom: 8px;
+    }
+
+    table.feedback th {
+      background: var(--header-bg);
+      color: var(--white);
+      text-align: left;
+      padding: 10px 8px;
+      font-weight: 600;
+    }
+
+    table.feedback td {
+      border: 1px solid var(--border);
+      padding: 10px 8px;
+      vertical-align: top;
+    }
+
+    table.feedback tbody tr:nth-child(even) td { background: var(--row-alt); }
+
+    table.feedback .area {
+      font-weight: 600;
+      width: 16%;
+      white-space: nowrap;
+    }
+
+    table.feedback .q { width: 38%; }
+
+    table.feedback .score-cell { width: 14%; min-width: 110px; }
+
+    table.feedback .comment-cell { width: 32%; }
+
+    .score-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+
+    .score-options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .score-options input { accent-color: var(--teal); }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      font: inherit;
+      font-size: 0.88rem;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid var(--focus);
+      outline-offset: 1px;
+    }
+
+    textarea { min-height: 64px; resize: vertical; }
+
+    table.open td:first-child { width: 42%; font-weight: 500; }
+
+    .common-block {
+      display: none;
+      margin-top: 32px;
+      padding-top: 8px;
+      border-top: 2px solid var(--border);
+    }
+
+    .common-block.active { display: block; }
+
+    .yn {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 6px 0;
+    }
+
+    .yn label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .actions {
+      display: none;
+      margin-top: 28px;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .actions.active { display: flex; }
+
+    button[type="submit"],
+    .btn-secondary {
+      font: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      padding: 12px 28px;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      color: var(--white);
+      background: var(--teal);
+      border: none;
+    }
+
+    button[type="submit"]:hover { background: var(--teal-dark); }
+
+    .btn-secondary {
+      color: var(--teal-dark);
+      background: var(--white);
+      border: 1px solid var(--teal);
+    }
+
+    .btn-secondary:hover { background: #e6f5f6; }
+
+    .status {
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .status.show { display: block; }
+    .status.ok { color: var(--ok); }
+    .status.err { color: var(--err); }
+
+    .thankyou {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px 28px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .thankyou.show { display: block; }
+
+    .thankyou h2 {
+      color: var(--teal-dark);
+      font-size: 1.5rem;
+      margin: 0 0 10px;
+    }
+
+    .thankyou p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 720px) {
+      table.feedback, table.open,
+      table.feedback thead, table.open thead,
+      table.feedback tbody, table.open tbody,
+      table.feedback tr, table.open tr,
+      table.feedback th, table.open th,
+      table.feedback td, table.open td {
+        display: block;
+        width: 100% !important;
+      }
+
+      table.feedback thead, table.open thead { display: none; }
+
+      table.feedback tr, table.open tr {
+        margin-bottom: 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--white);
+      }
+
+      table.feedback td, table.open td {
+        border: none;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 12px;
+      }
+
+      table.feedback td:last-child, table.open td:last-child { border-bottom: none; }
+
+      table.feedback .area::before { content: "Area: "; color: var(--muted); font-weight: 500; }
+      table.feedback td.q::before { content: "Question: "; display: block; color: var(--muted); font-weight: 500; margin-bottom: 4px; }
+      table.feedback .score-cell::before { content: "Score (1–5): "; display: block; color: var(--muted); font-weight: 500; margin-bottom: 6px; }
+      table.feedback .comment-cell::before { content: "Comments: "; display: block; color: var(--muted); font-weight: 500; margin-bottom: 6px; }
+      table.open td:first-child { background: var(--row-alt); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1 id="cfg-title">SEARN NRA LMS Pilot Feedback Form</h1>
+      <p class="tagline" id="cfg-tagline">Structured feedback by user group | For pilot validation and improvement tracking</p>
+      <p class="purpose" id="cfg-purpose">
+        This form captures practical feedback from each user group participating in the SEARN NRA LMS pilot.
+        The aim is to validate current platform workflows, role fit, usability, access, records, catalogue, and reporting.
+        It is not intended to collect broad wishlist items or new scope.
+      </p>
+    </header>
+
+    <h2>How to Complete the Form</h2>
+    <div class="guide">
+      <p>Use the same score scale for each feedback item:</p>
+      <table class="scale">
+        <thead>
+          <tr><th>Score</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Not clear / not usable</td></tr>
+          <tr><td>2</td><td>Partly clear / needs improvement</td></tr>
+          <tr><td>3</td><td>Mostly clear / usable with minor changes</td></tr>
+          <tr><td>4</td><td>Clear and useful</td></tr>
+          <tr><td>5</td><td>Very clear and directly useful</td></tr>
+        </tbody>
+      </table>
+      <p class="note">For comments, please describe the specific issue or improvement. Specific feedback is more useful than general reactions.</p>
+    </div>
+
+    <form id="feedback-form">
+      <h2>Select your user group</h2>
+      <div class="role-box">
+        <p>Choose one. Your questions will appear below.</p>
+        <div class="roles" role="radiogroup" aria-label="User group">
+          <label class="role">
+            <input type="radio" name="user_group" value="leadership" required />
+            <span>1. NRA Leadership / HR / Training Lead Feedback</span>
+          </label>
+          <label class="role">
+            <input type="radio" name="user_group" value="manager" />
+            <span>2. NRA Manager Feedback</span>
+          </label>
+          <label class="role">
+            <input type="radio" name="user_group" value="staff" />
+            <span>3. NRA Staff / Learner Feedback</span>
+          </label>
+          <label class="role">
+            <input type="radio" name="user_group" value="it" />
+            <span>4. IT / Access Focal Point Feedback</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ========== 1. Leadership ========== -->
+      <section id="panel-leadership" class="panel" data-group="leadership" hidden>
+        <h2>1. NRA Leadership / HR / Training Lead Feedback</h2>
+        <p class="focus-line"><strong>Focus:</strong> whether the platform gives the NRA enough control, visibility, and structure to manage workforce development.</p>
+
+        <h3>Feedback questions</h3>
+        <table class="feedback">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Feedback question</th>
+              <th>Score (1–5)</th>
+              <th>Comments / specific improvement</th>
+            </tr>
+          </thead>
+          <tbody id="scores-leadership"></tbody>
+        </table>
+
+        <h3>Open-ended questions</h3>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <table class="feedback open">
+          <thead><tr><th>Question</th><th>Response</th></tr></thead>
+          <tbody id="open-leadership"></tbody>
+        </table>
+      </section>
+
+      <!-- ========== 2. Manager ========== -->
+      <section id="panel-manager" class="panel" data-group="manager" hidden>
+        <h2>2. NRA Manager Feedback</h2>
+        <p class="focus-line"><strong>Focus:</strong> whether a manager can realistically identify team needs, assign training, monitor progress, and review records.</p>
+
+        <h3>Feedback questions</h3>
+        <table class="feedback">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Feedback question</th>
+              <th>Score (1–5)</th>
+              <th>Comments / specific improvement</th>
+            </tr>
+          </thead>
+          <tbody id="scores-manager"></tbody>
+        </table>
+
+        <h3>Open-ended questions</h3>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <table class="feedback open">
+          <thead><tr><th>Question</th><th>Response</th></tr></thead>
+          <tbody id="open-manager"></tbody>
+        </table>
+      </section>
+
+      <!-- ========== 3. Staff ========== -->
+      <section id="panel-staff" class="panel" data-group="staff" hidden>
+        <h2>3. NRA Staff / Learner Feedback</h2>
+        <p class="focus-line"><strong>Focus:</strong> whether staff can easily find training, complete assigned tasks, upload proof, give feedback, and view their own learning record.</p>
+
+        <h3>Feedback questions</h3>
+        <table class="feedback">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Feedback question</th>
+              <th>Score (1–5)</th>
+              <th>Comments / specific improvement</th>
+            </tr>
+          </thead>
+          <tbody id="scores-staff"></tbody>
+        </table>
+
+        <h3>Open-ended questions</h3>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <table class="feedback open">
+          <thead><tr><th>Question</th><th>Response</th></tr></thead>
+          <tbody id="open-staff"></tbody>
+        </table>
+      </section>
+
+      <!-- ========== 4. IT ========== -->
+      <section id="panel-it" class="panel" data-group="it" hidden>
+        <h2>4. IT / Access Focal Point Feedback</h2>
+        <p class="focus-line"><strong>Focus:</strong> whether pilot users can access the environment and whether there are immediate practical access barriers.</p>
+
+        <h3>Feedback questions</h3>
+        <table class="feedback">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Feedback question</th>
+              <th>Score (1–5)</th>
+              <th>Comments / specific improvement</th>
+            </tr>
+          </thead>
+          <tbody id="scores-it"></tbody>
+        </table>
+
+        <h3>Open-ended questions</h3>
+        <p class="note" style="margin-bottom:10px">Please focus feedback on pilot workflows, role fit, access, records, catalogue, and reporting.</p>
+        <table class="feedback open">
+          <thead><tr><th>Question</th><th>Response</th></tr></thead>
+          <tbody id="open-it"></tbody>
+        </table>
+      </section>
+
+      <!-- Common for all -->
+      <div id="common-block" class="common-block">
+        <h2>Common Final Questions for All Users</h2>
+        <table class="feedback open">
+          <thead><tr><th>Question</th><th>Response</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>What role did you test?</td>
+              <td><input type="text" name="common_role_tested" /></td>
+            </tr>
+            <tr>
+              <td>Which workflow did you test?</td>
+              <td><input type="text" name="common_workflow_tested" /></td>
+            </tr>
+            <tr>
+              <td>What worked well?</td>
+              <td><textarea name="common_worked_well"></textarea></td>
+            </tr>
+            <tr>
+              <td>What was unclear?</td>
+              <td><textarea name="common_unclear"></textarea></td>
+            </tr>
+            <tr>
+              <td>What should be improved before wider rollout?</td>
+              <td><textarea name="common_improve"></textarea></td>
+            </tr>
+            <tr>
+              <td>Any issue that blocks pilot continuation?</td>
+              <td>
+                <div class="yn">
+                  <label><input type="radio" name="common_blocker" value="Yes" /> Yes</label>
+                  <label><input type="radio" name="common_blocker" value="No" /> No</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>If yes, describe the blocker.</td>
+              <td><textarea name="common_blocker_desc"></textarea></td>
+            </tr>
+            <tr>
+              <td>Overall readiness for pilot use (1–5)</td>
+              <td>
+                <div class="score-options">
+                  <label><input type="radio" name="common_readiness" value="1" /> 1</label>
+                  <label><input type="radio" name="common_readiness" value="2" /> 2</label>
+                  <label><input type="radio" name="common_readiness" value="3" /> 3</label>
+                  <label><input type="radio" name="common_readiness" value="4" /> 4</label>
+                  <label><input type="radio" name="common_readiness" value="5" /> 5</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Would you recommend continuing to the structured pilot?</td>
+              <td>
+                <div class="yn">
+                  <label><input type="radio" name="common_recommend" value="Yes" /> Yes</label>
+                  <label><input type="radio" name="common_recommend" value="No" /> No</label>
+                  <label><input type="radio" name="common_recommend" value="With changes" /> With changes</label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="actions" class="actions">
+        <button type="submit" id="cfg-submit">Submit feedback</button>
+        <span id="status" class="status" role="status"></span>
+      </div>
+    </form>
+
+    <div id="thankyou" class="thankyou" role="status" aria-live="polite">
+      <h2 id="cfg-thanks-title">Thank you for your feedback</h2>
+      <p id="cfg-thanks-msg">Your SEARN NRA LMS Pilot Feedback Form response has been submitted successfully.</p>
+      <button type="button" class="btn-secondary" id="again-btn">Submit another response</button>
+    </div>
+  </div>
+
+  <script>
+    const GROUPS = {
+      leadership: {
+        scores: [
+          ["NRA setup", "Is the NRA structure, users, and roles clear enough to represent your organization?"],
+          ["Role permissions", "Do the permissions for leadership, managers, and staff feel appropriate?"],
+          ["Competency framework", "Is the link between SEARN competencies and NRA-specific competency needs understandable?"],
+          ["NRA-specific training catalogue", "Is it clear how the NRA can add or manage its own training entries?"],
+          ["Training records", "Does the system provide useful visibility into staff training records?"],
+          ["Regulatory Passport", "Is the Regulatory Passport useful as a record of staff training and competency development?"],
+          ["Reporting", "Are the reports useful for NRA-level review and planning?"],
+          ["Data boundary", "Is it clear which data remains within the NRA LMS and what may be shared as aggregated information?"],
+          ["Pilot readiness", "Would this workflow support a small internal pilot in your NRA?"]
+        ],
+        open: [
+          "Which part of the NRA Leadership / HR workflow felt most useful?",
+          "Which step was unclear or did not match how your NRA currently manages training?",
+          "What data would you need to see before using this for real training planning?",
+          "Are there any role or permission concerns we should correct before broader onboarding?",
+          "What is the one change that would make this more practical for your NRA?"
+        ]
+      },
+      manager: {
+        scores: [
+          ["Team view", "Is it clear how to view your team members?"],
+          ["Training needs", "Is it clear how competency needs or gaps are shown for staff?"],
+          ["Catalogue search", "Is it easy to find relevant training from the SEARN or NRA catalogue?"],
+          ["Training assignment", "Is the process of assigning training to staff understandable?"],
+          ["Training requests", "Is it clear how staff training requests are reviewed or handled?"],
+          ["Progress tracking", "Can you understand who has completed, not completed, or still needs training?"],
+          ["Certificates / proof", "Is the completion proof or certificate process clear enough?"],
+          ["Feedback review", "Is training feedback useful for future planning?"],
+          ["Practical fit", "Would this help you manage team training more consistently?"]
+        ],
+        open: [
+          "What would you most likely use as a manager: catalogue search, assignment, progress tracking, or records?",
+          "Was any step confusing or too many clicks?",
+          "Does the workflow match how training decisions are made in your team?",
+          "What information would you need on the manager dashboard?",
+          "What is the one improvement that would make this easier for managers?"
+        ]
+      },
+      staff: {
+        scores: [
+          ["Dashboard clarity", "Is it clear what training has been assigned to you?"],
+          ["Finding training", "Is it easy to search or browse available training?"],
+          ["Requesting training", "Is it clear how to request training that is relevant to your role?"],
+          ["Accessing training", "Is it clear whether training is inside the platform or on an external provider site?"],
+          ["Completion process", "Is it clear how to mark training as completed?"],
+          ["Certificate upload", "Is it easy to upload a certificate or completion proof?"],
+          ["Feedback submission", "Is it clear how to provide feedback after training?"],
+          ["Regulatory Passport", "Is your learning record / Regulatory Passport easy to understand?"],
+          ["Overall usability", "Would you be comfortable using this for your own training record?"]
+        ],
+        open: [
+          "What was easiest to understand?",
+          "What was confusing or unclear?",
+          "Would you know what action to take after logging in?",
+          "Is the Regulatory Passport useful to you as a personal training record?",
+          "What is the one improvement that would make this easier for staff?"
+        ]
+      },
+      it: {
+        scores: [
+          ["Login access", "Could pilot users access the platform successfully?"],
+          ["Email verification", "Did email-based login / verification work reliably?"],
+          ["Network access", "Was the platform accessible from office networks?"],
+          ["Browser compatibility", "Did the platform work on commonly used browsers?"],
+          ["User setup", "Was the user onboarding process clear?"],
+          ["Role setup", "Were roles assigned correctly for pilot users?"],
+          ["Support process", "Was it clear how to raise access or technical issues?"],
+          ["Pilot environment", "Was the distinction between pilot environment and production hosting clear?"]
+        ],
+        open: [
+          "Were there any login, email, browser, or network restrictions?",
+          "Did any users need special support to access the platform?",
+          "Are there local IT policies that may affect wider onboarding?",
+          "What should be checked before adding more users?",
+          "What is the one access issue that should be resolved first?"
+        ]
+      }
+    };
+
+    function slug(s) {
+      return s.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+    }
+
+    function scoreRadios(name) {
+      return [1, 2, 3, 4, 5]
+        .map((n) => `<label><input type="radio" name="${name}" value="${n}" /> ${n}</label>`)
+        .join("");
+    }
+
+    function renderGroup(key) {
+      const data = GROUPS[key];
+      const scoresEl = document.getElementById("scores-" + key);
+      const openEl = document.getElementById("open-" + key);
+
+      scoresEl.innerHTML = data.scores
+        .map(([area, question], i) => {
+          const base = `${key}_score_${i}_${slug(area)}`;
+          return `<tr>
+            <td class="area">${area}</td>
+            <td class="q">${question}</td>
+            <td class="score-cell"><div class="score-options">${scoreRadios(base)}</div></td>
+            <td class="comment-cell"><textarea name="${base}_comment" rows="2"></textarea></td>
+          </tr>`;
+        })
+        .join("");
+
+      openEl.innerHTML = data.open
+        .map((q, i) => {
+          return `<tr>
+            <td>${q}</td>
+            <td><textarea name="${key}_open_${i}" rows="3"></textarea></td>
+          </tr>`;
+        })
+        .join("");
+    }
+
+    Object.keys(GROUPS).forEach(renderGroup);
+
+    // Apply copy-paste settings from settings.js
+    const CFG = window.FORM_SETTINGS || {};
+    (function applySettings() {
+      if (CFG.pageTitle) {
+        document.title = CFG.pageTitle;
+        const t = document.getElementById("cfg-title");
+        if (t) t.textContent = CFG.pageTitle;
+      }
+      const tag = document.getElementById("cfg-tagline");
+      if (tag && CFG.tagline) tag.textContent = CFG.tagline;
+      const purpose = document.getElementById("cfg-purpose");
+      if (purpose && CFG.purpose) purpose.textContent = CFG.purpose;
+      const ty = document.getElementById("cfg-thanks-title");
+      if (ty && CFG.thankYouTitle) ty.textContent = CFG.thankYouTitle;
+      const tm = document.getElementById("cfg-thanks-msg");
+      if (tm && CFG.thankYouMessage) tm.textContent = CFG.thankYouMessage;
+      const sub = document.getElementById("cfg-submit");
+      if (sub && CFG.submitButtonLabel) sub.textContent = CFG.submitButtonLabel;
+      const again = document.getElementById("again-btn");
+      if (again && CFG.againButtonLabel) again.textContent = CFG.againButtonLabel;
+    })();
+
+    const form = document.getElementById("feedback-form");
+    const commonBlock = document.getElementById("common-block");
+    const actions = document.getElementById("actions");
+    const status = document.getElementById("status");
+    const thankyou = document.getElementById("thankyou");
+    const againBtn = document.getElementById("again-btn");
+
+    function showGroup(key) {
+      document.querySelectorAll(".panel").forEach((p) => {
+        const on = p.dataset.group === key;
+        p.classList.toggle("active", on);
+        p.hidden = !on;
+      });
+      commonBlock.classList.add("active");
+      actions.classList.add("active");
+      status.className = "status";
+      status.textContent = "";
+    }
+
+    function showThankYou() {
+      form.style.display = "none";
+      thankyou.classList.add("show");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetFormView() {
+      thankyou.classList.remove("show");
+      form.style.display = "";
+      form.reset();
+      document.querySelectorAll(".panel").forEach((p) => {
+        p.classList.remove("active");
+        p.hidden = true;
+      });
+      commonBlock.classList.remove("active");
+      actions.classList.remove("active");
+      status.className = "status";
+      status.textContent = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    againBtn.addEventListener("click", resetFormView);
+
+    form.querySelectorAll('input[name="user_group"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        if (radio.checked) showGroup(radio.value);
+      });
+    });
+
+    // URL comes from settings.js only — do not hardcode here
+    const GOOGLE_SCRIPT_URL = (CFG.googleScriptUrl || "").trim();
+
+    const GROUP_LABELS = {
+      leadership: "NRA Leadership / HR / Training Lead",
+      manager: "NRA Manager",
+      staff: "NRA Staff / Learner",
+      it: "IT / Access Focal Point",
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const group = form.querySelector('input[name="user_group"]:checked');
+      if (!group) {
+        status.className = "status show err";
+        status.textContent = "Please select your user group.";
+        return;
+      }
+
+      const all = Object.fromEntries(new FormData(form).entries());
+      const key = group.value;
+      const def = GROUPS[key];
+
+      const scores = def.scores.map(([area, question], i) => {
+        const base = `${key}_score_${i}_${slug(area)}`;
+        return {
+          area,
+          question,
+          score: all[base] || "",
+          comment: all[`${base}_comment`] || "",
+        };
+      });
+
+      const open = def.open.map((question, i) => ({
+        question,
+        response: all[`${key}_open_${i}`] || "",
+      }));
+
+      const common = {
+        roleTested: all.common_role_tested || "",
+        workflowTested: all.common_workflow_tested || "",
+        workedWell: all.common_worked_well || "",
+        unclear: all.common_unclear || "",
+        improve: all.common_improve || "",
+        blocker: all.common_blocker || "",
+        blockerDesc: all.common_blocker_desc || "",
+        readiness: all.common_readiness || "",
+        recommend: all.common_recommend || "",
+      };
+
+      // Plain text a non-technical person can read in one cell
+      let report = "USER GROUP: " + (GROUP_LABELS[key] || key) + "\n\n";
+      report += "SCORES (1 = not clear, 5 = very clear)\n";
+      scores.forEach((s) => {
+        report += "• " + s.area + ": " + (s.score || "-") + "\n";
+        report += "  Question: " + s.question + "\n";
+        if (s.comment) report += "  Comment: " + s.comment + "\n";
+      });
+      report += "\nOPEN QUESTIONS\n";
+      open.forEach((o, i) => {
+        report += (i + 1) + ") " + o.question + "\n";
+        report += "   Answer: " + (o.response || "-") + "\n";
+      });
+
+      const payload = {
+        submittedAt: new Date().toLocaleString(),
+        userGroup: GROUP_LABELS[key] || key,
+        groupKey: key,
+        common,
+        scores,
+        open,
+        readableReport: report,
+      };
+
+      if (!GOOGLE_SCRIPT_URL) {
+        status.className = "status show err";
+        status.textContent = "Missing googleScriptUrl in settings.js (same folder as index.html).";
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      status.className = "status";
+      status.textContent = "";
+
+      try {
+        // text/plain + no-cors avoids browser CORS blocks with Apps Script
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload),
+        });
+
+        showThankYou();
+      } catch (err) {
+        status.className = "status show err";
+        status.textContent = "Could not save. Check your connection and try again.";
+        console.error(err);
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
