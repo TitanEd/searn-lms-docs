@@ -842,7 +842,7 @@
     const GOOGLE_SCRIPT_URL = (CFG.googleScriptUrl || "").trim();
 
     const GROUP_LABELS = {
-      leadership: "NRA Leadership / HR / Training Lead",
+      leadership: "NRA Admin (Leadership / HR / Training Lead)",
       manager: "NRA Manager",
       staff: "NRA Staff / Learner",
       it: "IT / Access Focal Point",
@@ -877,15 +877,14 @@
       }));
 
       const common = {
-        roleTested: all.common_role_tested || "",
-        workflowTested: all.common_workflow_tested || "",
+        overallExperience: all.overall_experience || "",
         workedWell: all.common_worked_well || "",
-        unclear: all.common_unclear || "",
         improve: all.common_improve || "",
         blocker: all.common_blocker || "",
         blockerDesc: all.common_blocker_desc || "",
         readiness: all.common_readiness || "",
-        recommend: all.common_recommend || "",
+        pilotPreparation: all.common_pilot_preparation || "",
+        anythingElse: all.common_anything_else || "",
       };
 
       const respondent = {
@@ -910,6 +909,18 @@
         report += (i + 1) + ") " + o.question + "\n";
         report += "   Answer: " + (o.response || "-") + "\n";
       });
+
+      report += "\nCOMMON FINAL QUESTIONS\n";
+      report += "• Overall experience (1–5): " + (common.overallExperience || "-") + "\n";
+      report += "• What worked well: " + (common.workedWell || "-") + "\n";
+      report += "• What should be improved before wider rollout: " + (common.improve || "-") + "\n";
+      report += "• Blocker to pilot continuation: " + (common.blocker || "-") + "\n";
+      if (common.blocker === "Yes") {
+        report += "  Blocker description: " + (common.blockerDesc || "-") + "\n";
+      }
+      report += "• Overall readiness for pilot use (1–5): " + (common.readiness || "-") + "\n";
+      report += "• Pilot preparation feedback: " + (common.pilotPreparation || "-") + "\n";
+      report += "• Anything else: " + (common.anythingElse || "-") + "\n";
 
       const payload = {
         submittedAt: new Date().toLocaleString(),
