@@ -13,6 +13,12 @@ Need to do one specific thing? Click a question below to jump straight to the st
 
     [:octicons-arrow-right-24: Logging In](logging-in.md)
 
+-   :material-lock-reset:{ .lg .middle } **How to reset a forgotten password?**
+
+    ---
+
+    [:octicons-arrow-right-24: Reset a Forgotten Password](logging-in.md#reset-a-forgotten-password)
+
 -   :material-account-edit:{ .lg .middle } **How to update my own profile?**
 
     ---
